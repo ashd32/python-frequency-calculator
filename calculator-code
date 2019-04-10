@@ -1,0 +1,143 @@
+_author_ = 'Melissa'
+
+#   Constant Integer whole_note = 8
+
+whole_note = 8
+
+#
+#
+#
+#   Function String get_string(String prompt)
+#       Declare String value
+#
+#       Display prompt
+#       Input value
+#       Return value
+#   End Function
+#
+
+def get_string(prompt):
+    value = ""
+
+    value = input(prompt)
+    return value
+
+#
+#   Function Real get_real(String prompt)
+#       Declare String value
+#
+#       Display prompt
+#       Input value
+#       While not value is a real number
+#           Display value,"is not a number. Please try again."
+#           Display prompt
+#           Input value
+#       End While
+#       Return value
+#   End Function
+#
+
+def valid_real(value):
+    try:
+        float(value)
+        return True
+    except:
+        return False
+def get_real(prompt):
+    value = ""
+
+    value = input(prompt)
+    while not valid_real(value):
+        print(value,"is not a number. Please try again.")
+        value = input(prompt)
+    return float(value)
+
+#
+#   Function Boolean y_or_n(String prompt)
+#       Declare String value
+#
+#       Display prompt
+#       Input value
+#       While True
+#           If value =="Y" Or value == "y" Then
+#               Return True
+#           Else If value == "N" Or value == "n" Then
+#               Return False
+#           Else
+#               Display "Please enter Y or N!"
+#               Display prompt
+#               Input value
+#           End If
+#       End While
+#   End Function
+#
+
+def y_or_n(prompt):
+    value = ""
+
+    value = input(prompt)
+    while True:
+        if value == "Y" or value == "y":
+            return True
+        elif value == "N" or value == "n":
+            return False
+        else:
+            print("Please enter Y or N!")
+            value = input(prompt)
+
+#
+#   Function Integer get_frequency(String() names, Real() frequencies, Real() note)
+#       Declare Boolean done = False
+#       Declare Integer counter = 0
+#
+#
+#
+#       While not done
+#           names_str(counter) = get_string("What is the name of the note?")
+#           frequencies(counter) = get_string("How many" + names_str(counter) + "note frequencies do you want?")
+#           note(counter) = get_string("What frequency is" + names_str(counter) + "?")
+#           counter = counter + 1
+#           done = y_or_n("Are you finished entering the information (Y/N)?")
+#       End While
+#       Return counter
+#   End Function
+#
+
+def get_frequency(names_str, frequencies_str, note_str):
+    done = False
+    counter = 0
+
+    while not done:
+        names_str(counter) = get_string("What is the name of the note?")
+        frequencies_str(counter) = get_string("How many" + names_str(counter) + "note frequencies do you want?")
+        note_str(counter) = get_string("What frequency is" + names_str(counter) + "?")
+        counter = counter + 1
+        done = y_or_n("Are you finished entering the information? (Y/N)")
+    return counter
+
+
+#
+#   Module whole_note_frequency()
+#       Declare Strings names_str(whole_note)
+#       Declare Real frequencies_str(whole_note)
+#       Declare Real note_str(whole_note)
+#       Declare Integer number_frequency
+#       Declare Real note_frequency
+#       Declare Real total_frequency
+#
+#
+#
+#       number_frequency = get_note(names_str, frequencies_str, note_str)
+#       note_frequency, total_frequency = calculate_totals(number_of_frequencies, note_frequency, total_frequency)
+#       Call display_frequency(number_frequency, names_str, frequencies_str, note_str, total_frequency, note_frequency)
+#   End Module
+
+
+names_str = ["" for x in range(whole_note)]
+frequencies_str = [0.0 for x in range(whole_note)]
+note_str = [0.0 for x in range(whole_note)]
+
+print(get_frequency(names_str, frequencies_str, note_str))
+print(names_str)
+print(frequencies_str)
+print(note_str)
